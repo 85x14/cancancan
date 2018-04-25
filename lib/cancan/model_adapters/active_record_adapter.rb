@@ -64,11 +64,11 @@ module CanCan
         end
       end
 
-      def database_records
+      def database_records(eager_load = true)
         if override_scope
           @model_class.where(nil).merge(override_scope)
         elsif @model_class.respond_to?(:where) && @model_class.respond_to?(:joins)
-          mergeable_conditions? ? build_relation(conditions) : build_relation(*@rules.map(&:conditions))
+          mergeable_conditions? ? build_relation(eager_load, conditions) : build_relation(eager_load, *@rules.map(&:conditions))
         else
           @model_class.all(conditions: conditions, joins: joins)
         end

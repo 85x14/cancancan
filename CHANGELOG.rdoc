@@ -1,5 +1,7 @@
 Unreleased
 
+* Fix cancancan#60 - Allow disabling eager loading via ActiveRecord#includes
+
 2.2.0 (Apr 13th, 2018)
 
 * Include conditions passed to authorize! in AccessDenied exception (kraflab)
